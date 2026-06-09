@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Sanjana Sadeq Areen</title>
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #1e3a8a; /* Deep Corporate Blue */
+            --secondary-color: #475569; /* Slate Gray */
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --border-color: #cbd5e1;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .resume-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 50px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-top: 8px solid var(--primary-color);
+        }
+
+        /* Header Section */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .header-text {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+
+        .header-text h2 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        /* Passport Photo Placeholder */
+        .photo-placeholder {
+            width: 132px;  /* Aspect ratio roughly 45mm x 55mm (Passport size) */
+            height: 162px;
+            border: 2px dashed var(--border-color);
+            background-color: #f1f5f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .photo-placeholder svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--border-color);
+            margin-bottom: 8px;
+        }
+
+        /* Layout Grid for Sections */
+        .resume-section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Objective */
+        .objective-text {
+            color: #334155;
+            text-align: justify;
+        }
+
+        /* Experience & Education Blocks */
+        .info-block {
+            margin-bottom: 25px;
+        }
+
+        .info-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .info-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .info-subtitle {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            font-style: italic;
+        }
+
+        .info-date {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            background-color: #eff6ff;
+            padding: 2px 10px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        .info-details {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .info-details li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 5px;
+            color: #334155;
+            text-align: justify;
+        }
+
+        .info-details li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Sub-details for meta information like roll/reg numbers */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 8px;
+            background-color: #f8fafc;
+            padding: 12px;
+            border-left: 3px solid var(--border-color);
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* Skills & Languages Tags */
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Personal Info Grid */
+        .personal-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .personal-info-item {
+            font-size: 0.95rem;
+        }
+
+        .personal-info-item strong {
+            color: var(--secondary-color);
+            display: inline-block;
+            width: 140px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .resume-container {
+                padding: 20px;
+            }
+            .header-section {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+            }
+            .header-text {
+                padding-right: 0;
+                margin-top: 20px;
+            }
+            .info-header {
+                flex-direction: column;
+            }
+            .info-date {
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+            .personal-info-item strong {
+                display: block;
+                width: auto;
+                margin-bottom: 2px;
+            }
+        }
+
+        /* Print Optimization */
+        @media print {
+            body {
+                background-color: #fff;
+                padding: 0;
+            }
+            .resume-container {
+                box-shadow: none;
+                padding: 0;
+                border-top: none;
+            }
+            .info-date {
+                background-color: transparent;
+                border: 1px solid var(--primary-color);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="resume-container">
+
+    <!-- Header Section -->
+    <header class="header-section">
+        <div class="header-text">
+            <h1>Sanjana Sadeq Areen</h1>
+            <h2>সানজানা সাদেক অরিন</h2>
+            <p style="margin-top: 5px; font-weight: 500; color: var(--secondary-color);">Social Worker / Apprentice Social Worker</p>
+        </div>
+        <!-- Passport Size Photo Space -->
+        <div class="photo-placeholder" style="border-style: solid; padding: 0; overflow: hidden;">
+            <img src="Areen Photo.jpg" alt="Sanjana Sadeq Areen" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+    </header>
+
+    <!-- Objective Section -->
+    <section class="resume-section">
+        <h3 class="section-title">Objective</h3>
+        <p class="objective-text">
+            Dedicated learner with a passion for continuous personal and professional development, possessing strong organizational skills and the ability to work effectively both independently and in team environments.
+        </p>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="resume-section">
+        <h3 class="section-title">Skills</h3>
+        <div class="tag-container">
+            <span class="tag">Adaptability</span>
+            <span class="tag">Communication</span>
+            <span class="tag">Teamwork</span>
+            <span class="tag">Time management</span>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="resume-section">
+        <h3 class="section-title">Experience</h3>
+
+        <!-- Experience 1 -->
+        <div class="info-block">
+            <div class="info-header">
+                <div>
+                    <div class="info-title">National Institute of Mental Health & Hospital (NIMH)</div>
+                    <div class="info-subtitle">Apprentice Social Worker</div>
+                </div>
+                <div class="info-date">04 September 2023 - 19 November 2023</div>
+            </div>
+            <p style="margin-bottom: 8px; font-size: 0.95rem; color: var(--secondary-color);"><em>Completed a 60-day field practicum in the Hospital Social Service Office, applying classroom theory to real-world psychiatric care under the Ministry of Health & Family Welfare.</em></p>
+            <ul class="info-details">
+                <li>Supervised by Professor Dr. Md. Abul Hossen, Department of Social Work, Jagannath University (Internal Supervisor), and Mst. Kamrun Nahar Begum, Social Service Officer, Hospital Social Service Office, NIMH (External Supervisor).</li>
+                <li>Conducted 5 in-depth case studies and maintained daily process recordings, detailing psychosocial assessments, treatment plans, and follow-up outcomes for in-patient and outpatient clients.</li>
+                <li>Delivered individual and family counseling to patients diagnosed with schizophrenia, bipolar affective disorder, conduct and brief psychotic disorders; facilitated communication between patients, caregivers, and the multidisciplinary medical team.</li>
+                <li>Performed home visits, emergency intake triage, and resource linkage—securing medication, financial aid, and community services for vulnerable clients.</li>
+                <li>Co-organized group therapy sessions, mental health awareness seminars, and recreational activities to promote social integration and reduce stigma.</li>
+                <li>Strengthened skills in social casework, group work, and community organization by bridging theoretical frameworks with direct practice, enhancing patient advocacy and system-level collaboration.</li>
+            </ul>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="info-block" style="margin-top: 25px;">
+            <div class="info-header">
+                <div>
+                    <div class="info-title">BIRDEM General Hospital</div>
+                    <div class="info-subtitle">Apprentice Social Worker</div>
+                </div>
+                <div class="info-date">24 February 2025 – 22 June 2025</div>
+            </div>
+            <p style="margin-bottom: 8px; font-size: 0.95rem; color: var(--secondary-color);"><em>Completed 60 working days of field practicum under dual supervision. Applied core social work methods—casework, group work, and community organization—in a hospital setting focused on diabetes, endocrine, and metabolic disorders.</em></p>
+            <strong style="font-size: 0.9rem; color: var(--text-dark); display: block; margin-bottom: 5px;">Key responsibilities included:</strong>
+            <ul class="info-details">
+                <li>Conducting interviews and compiling social histories</li>
+                <li>Assisting in patient assessments and documentation</li>
+                <li>Providing counseling and emotional support</li>
+                <li>Facilitating access to insulin, medication, and financial aid</li>
+                <li>Participating in Diabetes Guide Classes, ward visits, and library research</li>
+                <li>Supporting rehabilitation and follow-up care for vulnerable patients</li>
+                <li>Collaborating with Junior Social Welfare Officers and medical staff</li>
+                <li>Took 5 comprehensive case studies and engaged in over 60 patient interactions. Gained hands-on experience in psychosocial assessment, rapport building, and ethical practice. Finalized a detailed Field Work Report reflecting practical insights and professional growth.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="resume-section">
+        <h3 class="section-title">Educational Information</h3>
+
+        <!-- Degree 4: MSS -->
+        <div class="info-block">
+            <div class="info-header">
+                <div>
+                    <div class="info-title">M.S.S in Social Work</div>
+                    <div class="info-subtitle">Jagannath University</div>
+                </div>
+                <div class="info-date">Pass Year: 2025</div>
+            </div>
+            <div class="meta-grid">
+                <div><strong>Result:</strong> 3.36</div>
+            </div>
+        </div>
+
+        <!-- Degree 3: BSS -->
+        <div class="info-block">
+            <div class="info-header">
+                <div>
+                    <div class="info-title">BSS in Social Work</div>
+                    <div class="info-subtitle">Jagannath University</div>
+                </div>
+                <div class="info-date">Pass Year: 22/4/2024</div>
+            </div>
+            <div class="meta-grid">
+                <div><strong>Session:</strong> 18-19</div>
+                <div><strong>Result:</strong> 3.16</div>
+            </div>
+        </div>
+
+        <!-- Degree 2: HSC -->
+        <div class="info-block">
+            <div class="info-header">
+                <div>
+                    <div class="info-title">HSC</div>
+                    <div class="info-subtitle">Holy Cross College / হলি ক্রস কলেজ</div>
+                </div>
+                <div class="info-date">Pass Year: 2018</div>
+            </div>
+            <div class="meta-grid">
+                <div><strong>HSC Roll:</strong> 524368 / ৫২৪৩৬৮</div>
+                <div><strong>HSC Registration:</strong> 1310669923 / ১৩১০৬৬৯৯২৩</div>
+                <div><strong>Institution Code:</strong> 1325 / ১৩২৫</div>
+                <div><strong>HSC Result:</strong> 4.25 / ৪.২৫</div>
+                <div><strong>Result Date:</strong> 19 July 2018 / ১৯ জুলাই ২০১৮</div>
+            </div>
+        </div>
+
+        <!-- Degree 1: SSC -->
+        <div class="info-block">
+            <div class="info-header">
+                <div>
+                    <div class="info-title">SSC</div>
+                    <div class="info-subtitle">Monipur High School / মনিপুর স্কুল ও কলেজ</div>
+                </div>
+                <div class="info-date">Pass Year: 2016</div>
+            </div>
+            <div class="meta-grid">
+                <div><strong>SSC Roll:</strong> 523854 / ৫২৩৮NT৪</div>
+                <div><strong>SSC Registration:</strong> 1310669923 / ১৩১০৬৬৯৯২৩</div>
+                <div><strong>Institution Code:</strong> 1261 / ১২৬১</div>
+                <div><strong>SSC Result:</strong> 5.00 / ৫.০০</div>
+                <div><strong>Result Date:</strong> 11 May, 2016 / ১১ মে, ২০১৬</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements & Awards Section -->
+    <section class="resume-section">
+        <h3 class="section-title">Achievements & Awards</h3>
+        <ul class="info-details">
+            <li><strong>Certificate of Attendance:</strong> Awarded to Sanjana Sadeq Areen for perfect attendance during her two years of study (July 1, 2016 – June 30, 2018) at Holy Cross College, Dhaka.</li>
+            <li>Participated in Bishwo Shahitto Kendro’s 2013 nationwide reading program; earned special-merit recognition for leadership in group events and seminars.</li>
+            <li><strong>Co-Curricular Participation Certificate:</strong> Holy Cross College, Dhaka. Actively engaged in sports classes, rhythmic exercises, group drills/dance, seminar series, study tours, college picnic, and charitable contributions.</li>
+            <li><strong>Journalism Workshop Certificate:</strong> Successfully participated in the “Basic Training and Workshop on Journalism – 2020” organized by Jagannath University Journalist Association on February 15, 2020.</li>
+        </ul>
+    </section>
+
+    <!-- Languages Section -->
+    <section class="resume-section">
+        <h3 class="section-title">Languages</h3>
+        <div class="tag-container">
+            <span class="tag">Bangla</span>
+            <span class="tag">English</span>
+        </div>
+    </section>
+
+    <!-- Personal Information Section -->
+    <section class="resume-section">
+        <h3 class="section-title">Personal Information</h3>
+        <div class="personal-info-grid">
+            <div class="personal-info-item"><strong>Name:</strong> Sanjana Sadeq Areen / সানজানা সাদেক অরিন</div>
+            <div class="personal-info-item"><strong>Father's Name:</strong> Md. Sadeq Ullah / মোহাম্মদ সাদেক উল্যাহ</div>
+            <div class="personal-info-item"><strong>Mother's Name:</strong> Afroza Begum / আফরোজা বেগম</div>
+            <div class="personal-info-item"><strong>Date of Birth:</strong> 06/12/2001 or ৬/১২/২০০১</div>
+            <div class="personal-info-item"><strong>Phone Number:</strong> 01521776176</div>
+            <div class="personal-info-item"><strong>Present Address:</strong> west lane of Dogai / ডগাইর পশ্চিমপাড়া</div>
+            <div class="personal-info-item"><strong>Postal Code:</strong> 1361</div>
+            <div class="personal-info-item"><strong>Ward:</strong> 66</div>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>
+
